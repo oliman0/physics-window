@@ -1,0 +1,22 @@
+Monitor Size:
+1920
+1080
+Monitors to the right of primary:
+1
+Monitors to the left of primary:
+0
+Window Size:
+400
+400
+Colour Hex (without # or 0x):
+000000
+Drag (horizontal velocity multipler when coliding with the floor):
+0.99
+Horizontal Bounce Multipler:
+0.99
+Vertical Bounce Multiplier:
+0.95
+Max Velocity From Gravity:
+50.0
+Gravity:
+2.0
