@@ -14,7 +14,7 @@ mod window;
 fn main() {
     if !std::path::Path::new("./windowfun_config.txt").is_file() {
         let mut file = File::create("./windowfun_config.txt").expect("config create failed");
-        file.write("Monitor Size:\n1920\n1080\nMonitors to the right of primary:\n0\nMonitors to the left of primary:\n0\nWindow Size:\n400\n400\nWindow Colour Hex (without # or 0x):\n000000\nDrag (horizontal velocity multipler when coliding with the floor):\n0.99\nHorizontal Bounce Multipler:\n0.99\nVertical Bounce Multiplier:\n0.95\nMax Velocity From Gravity:\n50.0\nGravity:\n2.0".as_bytes()).expect("write failed");
+        file.write("Monitor Size:\n1920\n1080\nMonitors to the right of primary:\n0\nMonitors to the left of primary:\n0\nWindow Size:\n400\n400\nWindow Colour Hex (without # or 0x):\n000000\nDrag (horizontal velocity multipler when coliding with the floor):\n0.99\nHorizontal Bounce Multipler:\n0.99\nVertical Bounce Multiplier:\n0.95\nMax Velocity From Gravity:\n50.0\nGravity:\n2.0\nWindow Title Bar (1 for true, 0 for false):\n0".as_bytes()).expect("write failed");
     }
     
     let config_file: Vec<String> = BufReader::new(File::open("./windowfun_config.txt").unwrap()).lines()
@@ -39,7 +39,9 @@ fn main() {
     let jump_height: f32 = 50.0;
     let arrowkeys_add: f32 = 20.0;
 
-    let window = window("Physics Window", window_size.x as i32, window_size.y as i32, window_size.x as i32, window_size.y as i32, 1.0);
+    let d: i32 = config_file[23].parse().unwrap();
+
+    let window = window("Physics Window", window_size.x as i32, window_size.y as i32, window_size.x as i32, window_size.y as i32, 1.0, d);
 
     let mut window_velocity = nalgebra_glm::vec2(20.0, 20.0);
     let mut window_pos: nalgebra_glm::Vec2;

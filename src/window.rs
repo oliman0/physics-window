@@ -102,7 +102,7 @@ impl Window {
     pub fn get_window_position(&self) -> nalgebra_glm::Vec2 { unsafe { let (mut x, mut y): (i32, i32) = (0, 0); glfwGetWindowPos(self.window, &mut x, &mut y); nalgebra_glm::vec2(x as f32, y as f32) } }
     pub fn set_window_position(&mut self, pos: &nalgebra_glm::Vec2) { unsafe { glfwSetWindowPos(self.window, pos.x as i32, pos.y as i32) } }
 }
-pub fn window(title: &str, scr_width: i32, scr_height: i32, viewport_w: i32, viewport_h: i32, sensitivity: f32) -> &mut Window {
+pub fn window(title: &str, scr_width: i32, scr_height: i32, viewport_w: i32, viewport_h: i32, sensitivity: f32, d: i32) -> &mut Window {
     unsafe {
 
     // glfw: initialize and configure
@@ -121,6 +121,7 @@ pub fn window(title: &str, scr_width: i32, scr_height: i32, viewport_w: i32, vie
     glfwWindowHint(OPENGL_FORWARD_COMPAT, 1);
     // Set Window non-resizable
     glfwWindowHint(RESIZABLE, 0);
+    glfwWindowHint(DECORATED, d);
 
     // glfw window creation
     // --------------------
